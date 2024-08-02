@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:ncbae/Complain%20Management/complain.dart';
 import 'package:ncbae/components/complain_container.dart';
 
-class InterfacePage extends StatefulWidget {
-  const InterfacePage({super.key});
+class ComplainBox extends StatefulWidget {
+  const ComplainBox({super.key});
 
   @override
-  State<InterfacePage> createState() => _InterfacePageState();
+  State<ComplainBox> createState() => _ComplainBoxState();
 }
 
-class _InterfacePageState extends State<InterfacePage> {
+class _ComplainBoxState extends State<ComplainBox> {
   final ref = FirebaseDatabase.instance.ref('NCBAE');
   @override
   Widget build(BuildContext context) {

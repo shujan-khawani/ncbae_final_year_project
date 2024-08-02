@@ -1,9 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ncbae/Authentication/login_page.dart';
+import 'package:ncbae/Interface/home.dart';
+import 'package:ncbae/firebase_options.dart';
+import 'package:ncbae/splash/splash_screen.dart';
 import 'package:ncbae/theme/themes.dart';
 
-import 'login_page.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure binding is initialized
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-void main() {
   runApp(const Ncbae());
 }
 
@@ -16,7 +24,7 @@ class Ncbae extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightMode,
       darkTheme: darkMode,
-      home: LoginPage(),
+      home: const SplashScreen(),
     );
   }
 }
