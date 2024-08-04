@@ -1,14 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyTextfield extends StatelessWidget {
   final String labelText;
   final bool obscure;
   final TextEditingController controller;
-  const MyTextfield({
+  var suffixIcon;
+  MyTextfield({
     super.key,
     required this.labelText,
     required this.obscure,
-    required this.controller
+    required this.controller,
+    required this.suffixIcon,
   });
 
   @override
@@ -16,14 +19,23 @@ class MyTextfield extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 16, right: 12, left: 12),
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'This Field can\'t be empty';
+          } else {
+            return null;
+          }
+        },
         controller: controller,
         obscureText: obscure,
         decoration: InputDecoration(
+          suffix: suffixIcon,
           labelText: labelText,
           filled: true,
           hintStyle: const TextStyle(color: Colors.grey),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.grey), // Default border color
+            borderSide:
+                const BorderSide(color: Colors.grey), // Default border color
             borderRadius: BorderRadius.circular(12),
           ),
           focusedBorder: OutlineInputBorder(

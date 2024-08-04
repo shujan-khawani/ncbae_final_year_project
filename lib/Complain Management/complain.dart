@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 
 import 'package:flutter/material.dart';
+import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/utils.dart';
 
 class ComplainPage extends StatefulWidget {
@@ -11,7 +12,8 @@ class ComplainPage extends StatefulWidget {
 }
 
 class _ComplainPageState extends State<ComplainPage> {
-  final complainController = TextEditingController();
+  // final complainController = TextEditingController();
+  final inputControllers = InputControllers();
   final ref = FirebaseDatabase.instance.ref('NCBAE');
   bool loading = false;
 
@@ -34,7 +36,7 @@ class _ComplainPageState extends State<ComplainPage> {
                 const Text('Enter a Complain! Anonymously'),
                 const SizedBox(height: 30),
                 TextField(
-                  controller: complainController,
+                  controller: inputControllers.complainController,
                   minLines: 4,
                   maxLines: 5,
                   decoration: const InputDecoration(
@@ -50,12 +52,13 @@ class _ComplainPageState extends State<ComplainPage> {
                     String id =
                         DateTime.now().millisecondsSinceEpoch.toString();
                     ref.child(id).set({
-                      'Complain': complainController.text.toString(),
+                      'Complain':
+                          inputControllers.complainController.text.toString(),
                       'ID': id,
                     }).then((value) {
                       setState(() {
                         loading = false;
-                        complainController.clear();
+                        inputControllers.complainController.clear();
                       });
                       Utils().toastMessage('Complaint Added Successfully!');
                     }).onError((error, stackTrace) {

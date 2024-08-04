@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/Interface/home.dart';
+import 'package:ncbae/Interface/notice_board_admin.dart';
+import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/utils.dart';
 
 import '../components/my_button.dart';
@@ -14,98 +16,275 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final TextEditingController _email = TextEditingController();
-
-  final TextEditingController _password = TextEditingController();
-
-  final TextEditingController _confirmPassword = TextEditingController();
-
+  final inputControllers = InputControllers();
   final auth = FirebaseAuth.instance;
   bool loading = false;
+  bool adminLoading = false;
+  final _form = GlobalKey<FormState>();
+  final formAdmin = GlobalKey<FormState>();
+  bool obscureText = true;
+  bool onTap = true;
+
+  // Admin credentials
+  final String adminEmail = 'iamadmin123@gmail.com';
+  final String adminPassword = 'i_am_admin_123';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      extendBody: true,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
-              Expanded(
-                  flex: 2,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Image.asset(
-                        'images/Login image.jpg',
-                        fit: BoxFit.cover,
-                      ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Image.asset(
+                    'images/Login image.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    child: Text(
+                      'NCBA&E: Empowering Minds, Shaping Futures',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(context).colorScheme.primary),
                     ),
-                  )),
-              Expanded(
-                  flex: 3,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 18),
-                        child: Text(
-                          'NCBA&E: Empowering Minds, Shaping Futures',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.primary),
+                  ),
+                  Form(
+                    key: _form,
+                    child: Column(
+                      children: [
+                        MyTextfield(
+                          suffixIcon: null,
+                          labelText: 'Email',
+                          obscure: false,
+                          controller: inputControllers.emailController,
                         ),
-                      ),
-                      MyTextfield(
-                        labelText: 'Email',
-                        obscure: false,
-                        controller: _email,
-                      ),
-                      MyTextfield(
+                        MyTextfield(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              if (onTap != true) {
+                                setState(() {
+                                  obscureText = true;
+                                  onTap = true;
+                                });
+                              } else {
+                                setState(() {
+                                  onTap = false;
+                                  obscureText = false;
+                                });
+                              }
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 18.0),
+                              child: obscureText
+                                  ? const Icon(Icons.visibility_off_sharp)
+                                  : const Icon(Icons.visibility_sharp),
+                            ),
+                          ),
                           labelText: 'Password',
                           obscure: true,
-                          controller: _password),
-                      MyTextfield(
-                        labelText: 'Confirm Password',
-                        obscure: true,
-                        controller: _confirmPassword,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [Text('Forgot Password?')],
+                          controller: inputControllers.passwordController,
                         ),
-                      ),
-                      MyButton(
-                          loading: loading,
-                          buttontext: 'Register',
-                          onTap: () {
+                        MyTextfield(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              if (onTap != true) {
+                                setState(() {
+                                  obscureText = true;
+                                  onTap = true;
+                                });
+                              } else {
+                                setState(() {
+                                  onTap = false;
+                                  obscureText = false;
+                                });
+                              }
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 18.0),
+                              child: obscureText
+                                  ? const Icon(Icons.visibility_off_sharp)
+                                  : const Icon(Icons.visibility_sharp),
+                            ),
+                          ),
+                          labelText: 'Confirm Password',
+                          obscure: true,
+                          controller: inputControllers.confirmPassController,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [Text('Forgot Password?')],
+                    ),
+                  ),
+                  MyButton(
+                    loading: loading,
+                    buttontext: 'Register',
+                    onTap: () {
+                      if (_form.currentState!.validate()) {
+                        setState(() {
+                          loading = true;
+                        });
+                        auth
+                            .createUserWithEmailAndPassword(
+                                email: inputControllers.emailController.text
+                                    .toString(),
+                                password: inputControllers
+                                    .passwordController.text
+                                    .toString())
+                            .then((value) {
+                          setState(() {
+                            loading = false;
+                          });
+                          Utils().toastMessage(
+                              'Signed Up and Signed In successfully');
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const HomePage()));
+                        }).onError((error, stackTrace) {
+                          setState(() {
+                            loading = false;
+                          });
+                          Utils().toastMessage(error.toString());
+                        });
+                      }
+                    },
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 16, right: 12, left: 12),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Divider(
+                          color: Theme.of(context).colorScheme.secondary,
+                        )),
+                        const Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [Text('Are you an Admin?')],
+                          ),
+                        ),
+                        Expanded(
+                            child: Divider(
+                          color: Theme.of(context).colorScheme.secondary,
+                        )),
+                      ],
+                    ),
+                  ),
+                  Form(
+                    key: formAdmin,
+                    child: Column(
+                      children: [
+                        MyTextfield(
+                          suffixIcon: null,
+                          labelText: 'Email',
+                          obscure: false,
+                          controller: inputControllers.adminEmailController,
+                        ),
+                        MyTextfield(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              if (onTap != true) {
+                                setState(() {
+                                  obscureText = true;
+                                  onTap = true;
+                                });
+                              } else {
+                                setState(() {
+                                  onTap = false;
+                                  obscureText = false;
+                                });
+                              }
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 18.0),
+                              child: obscureText
+                                  ? const Icon(Icons.visibility_off_sharp)
+                                  : const Icon(Icons.visibility_sharp),
+                            ),
+                          ),
+                          labelText: 'Password',
+                          obscure: obscureText,
+                          controller: inputControllers.adminPassController,
+                        ),
+                      ],
+                    ),
+                  ),
+                  MyButton(
+                    buttontext: 'Admin Login',
+                    onTap: () {
+                      if (formAdmin.currentState!.validate()) {
+                        setState(() {
+                          adminLoading = true;
+                        });
+
+                        // Debugging information
+                        debugPrint(
+                            'Admin Email Input: ${inputControllers.adminEmailController.text}');
+                        debugPrint(
+                            'Admin Password Input: ${inputControllers.adminPassController.text}');
+                        debugPrint('Expected Admin Email: $adminEmail');
+                        debugPrint('Expected Admin Password: $adminPassword');
+
+                        if (inputControllers.adminEmailController.text
+                                    .toString() ==
+                                adminEmail &&
+                            inputControllers.adminPassController.text
+                                    .toString() ==
+                                adminPassword) {
+                          auth
+                              .signInWithEmailAndPassword(
+                                  email: inputControllers
+                                      .adminEmailController.text
+                                      .toString(),
+                                  password: inputControllers
+                                      .adminPassController.text
+                                      .toString())
+                              .then((value) {
                             setState(() {
-                              loading = true;
+                              adminLoading = false;
                             });
-                            auth
-                                .createUserWithEmailAndPassword(
-                                    email: _email.text.toString(),
-                                    password: _password.text.toString())
-                                .then((value) {
-                              setState(() {
-                                loading = false;
-                              });
-                              Utils().toastMessage(
-                                  'Signed Up and Signed In successfully');
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
-                            }).onError((error, stackTrace) {
-                              setState(() {
-                                loading = false;
-                              });
-                              Utils().toastMessage(error.toString());
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const NoticeBoardAdmin(),
+                              ),
+                            );
+                            Utils()
+                                .toastMessage('Admin Logged In Successfully!');
+                          }).onError((error, stackTrace) {
+                            setState(() {
+                              adminLoading = false;
                             });
-                          }),
-                    ],
-                  )),
+                            Utils().toastMessage(error.toString());
+                          });
+                        } else {
+                          setState(() {
+                            adminLoading = false;
+                          });
+                          Utils().toastMessage('Invalid Admin Credentials');
+                        }
+                      }
+                    },
+                    loading: adminLoading,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

@@ -52,11 +52,8 @@ class _ComplainBoxState extends State<ComplainBox> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          enableFeedback: true,
+          elevation: 10,
           autofocus: true,
-          heroTag: 'Add Your Complaint',
-          isExtended: true,
-          tooltip: 'Add a Complain!',
           onPressed: () {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const ComplainPage()));

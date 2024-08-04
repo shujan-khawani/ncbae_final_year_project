@@ -11,14 +11,14 @@ class SplashServices {
     final user = auth.currentUser;
 
     if (user != null) {
-      Timer(const Duration(seconds: 5), () {
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const LoginPage()));
-      });
-    } else {
-      Timer(const Duration(seconds: 5), () {
+      Timer(const Duration(seconds: 3), () {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomePage()));
+      });
+    } else {
+      Timer(const Duration(seconds: 4), () {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       });
     }
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ncbae/components/logo_image.dart';
-import 'package:ncbae/components/text_class.dart';
+import 'package:ncbae/Utilities/text_class.dart';
+import 'package:ncbae/components/text_container.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
@@ -16,42 +17,110 @@ class ProfilePage extends StatelessWidget {
         child: ListView(
           children: [
             const LogoImage(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const Text(
-                    'ABOUT US',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 40,
+            Column(
+              children: [
+                TextContainer(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        const Text(
+                          'ABOUT US',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40,
+                          ),
+                        ),
+                        SelectableText(
+                          selectableText.aboutUs,
+                        ),
+                      ],
                     ),
                   ),
-                  SelectableText(
-                    selectableText.aboutUs,
-                  ),
-                  const Text(
-                    'VISION',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 40,
+                ),
+                TextContainer(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        const Text(
+                          'VISION',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40,
+                          ),
+                        ),
+                        SelectableText(
+                          selectableText.vision,
+                        ),
+                      ],
                     ),
                   ),
-                  SelectableText(
-                    selectableText.vision,
-                  ),
-                  const Text(
-                    'MISSION',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 40,
+                ),
+                TextContainer(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        const Text(
+                          'MISSION',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40,
+                          ),
+                        ),
+                        SelectableText(
+                          selectableText.mission,
+                        ),
+                      ],
                     ),
                   ),
-                  SelectableText(
-                    selectableText.mission,
+                ),
+                const TextContainer(
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Contact Us',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Email :',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Contact :',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SelectableText('info.multan@ncbae.edu.pk'),
+                                SelectableText('0301-8561418')
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             )
           ],
         ),

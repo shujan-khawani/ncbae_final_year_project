@@ -8,20 +8,9 @@ class ComplaintContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        constraints: const BoxConstraints(
-          minHeight: 50,
-        ),
-        width: double.infinity,
-        decoration: BoxDecoration(
-            border: Border.all(color: Theme.of(context).colorScheme.primary),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12.0),
-              topRight: Radius.circular(12.0),
-              bottomLeft: Radius.circular(12.0),
-              bottomRight: Radius.circular(0.0),
-            ),
-            color: Colors.transparent),
+      child: Card(
+        color: Theme.of(context).colorScheme.primary,
+        elevation: 10,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
