@@ -1,16 +1,19 @@
 # ncbae
 
-A new Flutter project.
+A Flutter project that contains a Complete Management System of A University NCBAE. It is a self project. The Contents include:
 
-## Getting Started
+-> Notice Board
+-> Complaint Management System
+-> About Page for University
 
-This project is a starting point for a Flutter application.
+The components used are:
 
-A few resources to get you started if this is your first Flutter project:
+-> AppBars (Local)
+-> Bottom Navigation Bar (Google_Nav_Bar)
+-> Drawers
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Backend is done through:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-> Firebase
+-> Realtime Firebase Database
+-> Firebase Authentication
