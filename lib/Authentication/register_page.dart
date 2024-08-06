@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/Interface/home.dart';
-import 'package:ncbae/Interface/notice_board_admin.dart';
+import 'package:ncbae/Admin%20Controls/notice_board_admin.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/utils.dart';
 
@@ -23,7 +23,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final _form = GlobalKey<FormState>();
   final formAdmin = GlobalKey<FormState>();
   bool obscureText = true;
+  bool obscureText2 = true;
   bool onTap = true;
+  bool onTap2 = true;
 
   // Admin credentials
   final String adminEmail = 'iamadmin123@gmail.com';
@@ -72,27 +74,27 @@ class _RegisterPageState extends State<RegisterPage> {
                         MyTextfield(
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              if (onTap != true) {
+                              if (onTap2 != true) {
                                 setState(() {
-                                  obscureText = true;
-                                  onTap = true;
+                                  obscureText2 = true;
+                                  onTap2 = true;
                                 });
                               } else {
                                 setState(() {
-                                  onTap = false;
-                                  obscureText = false;
+                                  onTap2 = false;
+                                  obscureText2 = false;
                                 });
                               }
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(right: 18.0),
-                              child: obscureText
+                              child: obscureText2
                                   ? const Icon(Icons.visibility_off_sharp)
                                   : const Icon(Icons.visibility_sharp),
                             ),
                           ),
                           labelText: 'Password',
-                          obscure: true,
+                          obscure: obscureText2,
                           controller: inputControllers.passwordController,
                         ),
                         MyTextfield(
@@ -118,17 +120,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                           labelText: 'Confirm Password',
-                          obscure: true,
+                          obscure: obscureText,
                           controller: inputControllers.confirmPassController,
                         ),
                       ],
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [Text('Forgot Password?')],
                     ),
                   ),
                   MyButton(
@@ -152,8 +147,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           });
                           Utils().toastMessage(
                               'Signed Up and Signed In successfully');
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
                         }).onError((error, stackTrace) {
                           setState(() {
                             loading = false;
@@ -261,7 +257,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             });
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (context) => const NoticeBoardAdmin(),
+                                builder: (context) => NewsFeedScreen(),
                               ),
                             );
                             Utils()

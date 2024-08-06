@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:lottie/lottie.dart';
 import 'package:ncbae/Authentication/login_page.dart';
 import 'package:ncbae/Complain%20Management/complain_box.dart';
 import 'package:ncbae/Interface/notice_board.dart';
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         controller: _pageController,
         onPageChanged: _onPageChanged,
         children: <Widget>[
-          const NoticeBoardPage(),
+          NoticeBoardPage(),
           const ComplainBox(),
           ProfilePage(),
         ],
@@ -63,8 +62,6 @@ class _HomePageState extends State<HomePage> {
                   image: AssetImage('images/NCBAE LOGO.png'),
                 ),
               ),
-              const SizedBox(height: 60),
-              Lottie.asset('Assets/Animation - 1722710388861.json'),
               const Spacer(),
               const Divider(),
               ListTile(

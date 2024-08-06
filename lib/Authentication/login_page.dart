@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ncbae/Authentication/forgot_password.dart';
 import 'package:ncbae/Authentication/register_page.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/components/logo_image.dart';
@@ -23,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   // final TextEditingController _password = TextEditingController();
   final auth = FirebaseAuth.instance;
   bool loading = false;
+  bool registerLoading = false;
   final _form = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -83,11 +86,17 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [Text('Forgot Password?')],
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  const ForgotPasswordPage()));
+                        },
+                        child: const Text('Forgot Password?')),
                   ),
                 ),
                 MyButton(
@@ -110,8 +119,9 @@ class _LoginPageState extends State<LoginPage> {
                             loading = false;
                           });
                           Utils().toastMessage('Signed in Successfully');
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
                         }).onError((error, stackTrace) {
                           setState(() {
                             loading = false;
@@ -143,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 MyButton(
-                    loading: loading,
+                    loading: registerLoading,
                     buttontext: 'Register',
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(

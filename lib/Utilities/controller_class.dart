@@ -8,6 +8,7 @@ class InputControllers {
   final TextEditingController complainController = TextEditingController();
   final TextEditingController adminPassController = TextEditingController();
   final TextEditingController adminEmailController = TextEditingController();
+  final TextEditingController forgotController = TextEditingController();
 
   //variables
   final String adminEmail = 'iamadmin123@gmail.com';
