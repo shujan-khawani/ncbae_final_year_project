@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ncbae/Admin%20Controls/upload_post.dart';
 import 'package:ncbae/Interface/home.dart';
-import 'package:ncbae/Admin%20Controls/notice_board_admin.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/utils.dart';
 
@@ -257,7 +257,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             });
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (context) => NewsFeedScreen(),
+                                builder: (context) => UploadPost(),
                               ),
                             );
                             Utils()

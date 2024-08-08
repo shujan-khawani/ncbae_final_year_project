@@ -2,60 +2,42 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class NoticeBoardPage extends StatelessWidget {
+  const NoticeBoardPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('News Feed'),
-      ),
-      body: StreamBuilder(
+      appBar: AppBar(title: const Text('News Feed')),
+      body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('posts')
-            .orderBy('timestamp', descending: true)
+            .orderBy('createdAt', descending: true)
             .snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
           }
 
+          final posts = snapshot.data!.docs;
+
           return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
+            itemCount: posts.length,
             itemBuilder: (context, index) {
-              DocumentSnapshot post = snapshot.data!.docs[index];
-              Map<String, dynamic>? data = post.data() as Map<String, dynamic>?;
-
-              if (data == null) {
-                return ListTile(
-                  title: Text('Error: Missing data'),
-                );
-              }
-
-              String imageUrl = data['imageURL'] ?? '';
-              String userId = data['userId'] ?? 'Unknown user';
-              Timestamp? timestamp = data['timestamp'];
-              String description =
-                  data['description'] ?? 'No description available';
-
-              return Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Card(
-                  color: Theme.of(context).colorScheme.primary,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          description,
-                          style: TextStyle(),
-                        ),
-                        const SizedBox(height: 10),
-                        ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.network(imageUrl)),
-                      ],
+              final post = posts[index];
+              return Card(
+                margin: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.network(post['imageUrl']),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(post['description']),
                     ),
-                  ),
+                  ],
                 ),
               );
             },
