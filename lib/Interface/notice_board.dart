@@ -1,43 +1,55 @@
+// ignore_for_file: avoid_print
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class NoticeBoardPage extends StatelessWidget {
-  const NoticeBoardPage({super.key});
+class NoticeBoard extends StatefulWidget {
+  const NoticeBoard({super.key});
 
+  @override
+  State<NoticeBoard> createState() => _NoticeBoardState();
+}
+
+class _NoticeBoardState extends State<NoticeBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('News Feed')),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('posts')
-            .orderBy('createdAt', descending: true)
+            .orderBy('timestamp', descending: true)
             .snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
           if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return Text('Error: ${snapshot.error}');
           }
-
-          final posts = snapshot.data!.docs;
-
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Align(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator());
+          }
           return ListView.builder(
-            itemCount: posts.length,
+            itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
-              final post = posts[index];
-              return Card(
-                margin: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.network(post['imageUrl']),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(post['description']),
-                    ),
-                  ],
+              DocumentSnapshot document = snapshot.data!.docs[index];
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
+                child: Card(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        document['description'],
+                        style: const TextStyle(
+                          letterSpacing: .5,
+                        ),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(18),
+                        child: Image.network(document['imageUrl']),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

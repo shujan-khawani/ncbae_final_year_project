@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         controller: _pageController,
         onPageChanged: _onPageChanged,
         children: <Widget>[
-          NoticeBoardPage(),
+          const NoticeBoard(),
           const ComplainBox(),
           ProfilePage(),
         ],

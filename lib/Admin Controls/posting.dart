@@ -8,14 +8,14 @@ import 'package:image_picker/image_picker.dart';
 
 import '../Utilities/utils.dart';
 
-class PostUploadScreen extends StatefulWidget {
-  const PostUploadScreen({super.key});
+class AdminPostUpload extends StatefulWidget {
+  const AdminPostUpload({super.key});
 
   @override
-  _PostUploadScreenState createState() => _PostUploadScreenState();
+  _AdminPostUploadState createState() => _AdminPostUploadState();
 }
 
-class _PostUploadScreenState extends State<PostUploadScreen> {
+class _AdminPostUploadState extends State<AdminPostUpload> {
   File? _image;
   String _description = '';
 
@@ -35,8 +35,6 @@ class _PostUploadScreenState extends State<PostUploadScreen> {
     if (_image == null) {
       return; // Prevent upload without an image
     }
-    // ... rest of your uploadPost function
-    // Upload image to Firebase Storage
     Reference ref = FirebaseStorage.instance
         .ref('POSTS')
         .child('posts/${DateTime.now().millisecondsSinceEpoch}');
@@ -44,7 +42,7 @@ class _PostUploadScreenState extends State<PostUploadScreen> {
     TaskSnapshot snapshot = await uploadTask.whenComplete(() => null);
     String imageUrl = await snapshot.ref.getDownloadURL();
 
-    // Save post data to Firestore
+    // Save post data to Fire store
     await FirebaseFirestore.instance.collection('posts').add({
       'imageUrl': imageUrl,
       'description': _description,
@@ -63,7 +61,17 @@ class _PostUploadScreenState extends State<PostUploadScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: const Text('Upload Post')),
+      appBar: AppBar(
+        elevation: 10,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
+          'Admin Panel'.toUpperCase(),
+          style: const TextStyle(
+            letterSpacing: 2,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -98,7 +106,7 @@ class _PostUploadScreenState extends State<PostUploadScreen> {
                 }).onError((error, stackTrace) {
                   Utils().toastMessage(error.toString());
                 });
-              }, // Call uploadPost directly
+              },
               child: const Text('Upload'),
             ),
           ],

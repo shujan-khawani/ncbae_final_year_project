@@ -1,7 +1,7 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:ncbae/Authentication/login_page.dart';
-import 'package:ncbae/Posting/user_display.dart';
 import 'package:ncbae/firebase_options.dart';
 import 'package:ncbae/splash/splash_screen.dart';
 import 'package:ncbae/theme/themes.dart';
@@ -15,8 +15,22 @@ void main() async {
   runApp(const Ncbae());
 }
 
-class Ncbae extends StatelessWidget {
+class Ncbae extends StatefulWidget {
   const Ncbae({super.key});
+
+  @override
+  State<Ncbae> createState() => _NcbaeState();
+}
+
+class _NcbaeState extends State<Ncbae> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(const Duration(seconds: 5), () {
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +38,7 @@ class Ncbae extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightMode,
       darkTheme: darkMode,
-      home: UserDisplay(),
+      home: const SplashScreen(),
     );
   }
 }
