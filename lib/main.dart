@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/firebase_options.dart';
@@ -11,26 +9,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   runApp(const Ncbae());
 }
 
-class Ncbae extends StatefulWidget {
+class Ncbae extends StatelessWidget {
   const Ncbae({super.key});
-
-  @override
-  State<Ncbae> createState() => _NcbaeState();
-}
-
-class _NcbaeState extends State<Ncbae> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Timer(const Duration(seconds: 5), () {
-      setState(() {});
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

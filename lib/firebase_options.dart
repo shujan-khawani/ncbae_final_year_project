@@ -47,29 +47,32 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBJYWnWIEzUZ6HfnDk_SXjtAL8My0-SJxI',
-    appId: '1:122661617536:web:90b3e634567c7ba6050b65',
-    messagingSenderId: '122661617536',
-    projectId: 'project-final-year-project',
-    authDomain: 'project-final-year-project.firebaseapp.com',
-    storageBucket: 'project-final-year-project.appspot.com',
-    measurementId: 'G-FSZ2C129FQ',
+    apiKey: 'AIzaSyCNs9Fcm-DZGe9bXGkIZQ-yryEjTG8zVr4',
+    appId: '1:505730305011:web:91cee32f08112420e42086',
+    messagingSenderId: '505730305011',
+    projectId: 'ncbae-portal',
+    authDomain: 'ncbae-portal.firebaseapp.com',
+    databaseURL: 'https://ncbae-portal-default-rtdb.firebaseio.com',
+    storageBucket: 'ncbae-portal.appspot.com',
+    measurementId: 'G-J8SFY5YTWW',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD0H_ha0mWexxaWimNhviaGDzvKIIYAnWU',
-    appId: '1:122661617536:android:cd09f497fbb1f858050b65',
-    messagingSenderId: '122661617536',
-    projectId: 'project-final-year-project',
-    storageBucket: 'project-final-year-project.appspot.com',
+    apiKey: 'AIzaSyA7fB7nbD-0y-RzxvTTp1aUl1SRR7eggfI',
+    appId: '1:505730305011:android:1ba46e49bb4b174ce42086',
+    messagingSenderId: '505730305011',
+    projectId: 'ncbae-portal',
+    databaseURL: 'https://ncbae-portal-default-rtdb.firebaseio.com',
+    storageBucket: 'ncbae-portal.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA5gGOmaPenQ7S68ijMBH1GmNpiX7Eq_14',
-    appId: '1:122661617536:ios:75fdc3749eaf05f0050b65',
-    messagingSenderId: '122661617536',
-    projectId: 'project-final-year-project',
-    storageBucket: 'project-final-year-project.appspot.com',
+    apiKey: 'AIzaSyAaRpADCi4aU_7xG7_LyIl2IWPbohGY5EU',
+    appId: '1:505730305011:ios:1617f4eccd8b2f14e42086',
+    messagingSenderId: '505730305011',
+    projectId: 'ncbae-portal',
+    databaseURL: 'https://ncbae-portal-default-rtdb.firebaseio.com',
+    storageBucket: 'ncbae-portal.appspot.com',
     iosBundleId: 'com.example.ncbae',
   );
 

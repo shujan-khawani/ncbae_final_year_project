@@ -1,10 +1,13 @@
 // ignore_for_file: library_private_types_in_public_api, avoid_print
 
 import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ncbae/Utilities/text_class.dart';
+import 'package:ncbae/components/my_button.dart';
 
 import '../Utilities/utils.dart';
 
@@ -57,10 +60,14 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
     });
   }
 
+  final textClass = TextClass();
+
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      extendBody: true,
       appBar: AppBar(
         elevation: 10,
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -97,17 +104,47 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
             const SizedBox(height: 16.0),
             TextField(
               onChanged: (value) => _description = value,
-              decoration: const InputDecoration(labelText: 'Description'),
+              decoration: InputDecoration(
+                labelText: 'Description',
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
+            SizedBox(height: MediaQuery.of(context).size.height * .03),
+            MyButton(
+              buttontext: 'UPLOAD',
+              onTap: () {
                 _uploadPost().then((value) {
                   Utils().toastMessage('Post Uploaded');
                 }).onError((error, stackTrace) {
                   Utils().toastMessage(error.toString());
                 });
               },
-              child: const Text('Upload'),
+              loading: loading,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * .02),
+            Row(
+              children: [
+                Text(
+                  'Note: \n',
+                  style: TextStyle(
+                    fontSize: 19,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width * .06),
+                Text(textClass.note),
+              ],
             ),
           ],
         ),

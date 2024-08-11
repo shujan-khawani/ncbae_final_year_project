@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "122661617536",
-    "project_id": "project-final-year-project",
-    "storage_bucket": "project-final-year-project.appspot.com"
+    "project_number": "505730305011",
+    "firebase_url": "https://ncbae-portal-default-rtdb.firebaseio.com",
+    "project_id": "ncbae-portal",
+    "storage_bucket": "ncbae-portal.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:122661617536:android:cd09f497fbb1f858050b65",
+        "mobilesdk_app_id": "1:505730305011:android:1ba46e49bb4b174ce42086",
         "android_client_info": {
           "package_name": "com.example.ncbae"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD0H_ha0mWexxaWimNhviaGDzvKIIYAnWU"
+          "current_key": "AIzaSyA7fB7nbD-0y-RzxvTTp1aUl1SRR7eggfI"
         }
       ],
       "services": {

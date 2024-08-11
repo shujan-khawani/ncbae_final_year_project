@@ -1,7 +1,9 @@
 // ignore_for_file: avoid_print
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/Admin%20Controls/posting.dart';
+import 'package:ncbae/Authentication/login_page.dart';
 
 import '../Utilities/utils.dart';
 
@@ -25,12 +27,15 @@ class _AdminPostState extends State<AdminPost> {
     }
   }
 
+  final auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
         backgroundColor: Theme.of(context).colorScheme.primary,
+        automaticallyImplyLeading: false,
         title: Text(
           'Admin Panel'.toUpperCase(),
           style: const TextStyle(
@@ -38,6 +43,27 @@ class _AdminPostState extends State<AdminPost> {
           ),
         ),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: GestureDetector(
+              onTap: () {
+                auth.signOut().then((value) {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const LoginPage()));
+                  Utils().toastMessage(
+                      'Signed Out Successfully as \n ${auth.currentUser!.email}');
+                }).onError((error, stackTrace) {
+                  Utils().toastMessage(error.toString());
+                });
+              },
+              child: Icon(
+                Icons.logout_sharp,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+          ),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance

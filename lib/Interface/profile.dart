@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ncbae/components/logo_image.dart';
 import 'package:ncbae/Utilities/text_class.dart';
+import 'package:ncbae/components/logo_image.dart';
 import 'package:ncbae/components/text_container.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
-  final selectableText = textClass();
+  final selectableText = TextClass();
 
   @override
   Widget build(BuildContext context) {
