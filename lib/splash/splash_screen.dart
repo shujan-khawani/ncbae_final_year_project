@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/splash/splash_services.dart';
 
@@ -37,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Center(
               child: AnimatedOpacity(
                 opacity: _opacity,
-                duration: const Duration(seconds: 3),
+                duration: const Duration(milliseconds: 800),
                 child: Image.asset('images/NCBAE LOGO.png'),
               ),
             ),
