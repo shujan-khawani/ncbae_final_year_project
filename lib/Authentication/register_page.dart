@@ -28,8 +28,8 @@ class _RegisterPageState extends State<RegisterPage> {
   bool onTap2 = true;
 
   // Admin credentials
-  final String adminEmail = 'iamadmin123@gmail.com';
-  final String adminPassword = 'i_am_admin_123';
+  final String adminEmail = 'ncbae788@gmail.com';
+  final String adminPassword = 'ncbae788';
 
   @override
   Widget build(BuildContext context) {

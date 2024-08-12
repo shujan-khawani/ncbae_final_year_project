@@ -6,8 +6,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/text_class.dart';
 import 'package:ncbae/components/my_button.dart';
+import 'package:ncbae/components/student_field.dart';
 
 import '../Utilities/utils.dart';
 
@@ -23,12 +25,13 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
   final textClass = TextClass();
   //  variables
   File? _image;
-  String _description = '';
   bool loading = false;
+  //  instance for input controllers
+  final inputControllers = InputControllers();
   //  function to pick image from gallery
   Future<void> _pickImage() async {
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 60);
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);
@@ -53,7 +56,7 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
     // Save post data to Fire store
     await FirebaseFirestore.instance.collection('posts').add({
       'imageUrl': imageUrl,
-      'description': _description,
+      'description': inputControllers.postDescriptionController.text,
       'timestamp': FieldValue.serverTimestamp(),
       'postId': DateTime.now().millisecondsSinceEpoch,
     });
@@ -61,7 +64,7 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
     // Clear form fields
     setState(() {
       _image = null;
-      _description = '';
+      inputControllers.postDescriptionController.clear();
     });
   }
 
@@ -88,7 +91,7 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
             GestureDetector(
               onTap: () {
                 _pickImage().then((value) {
-                  Utils().toastMessage('Post Uploaded');
+                  Utils().toastMessage('Image Selected');
                 }).onError((error, stackTrace) {
                   Utils().toastMessage(error.toString());
                 });
@@ -103,24 +106,9 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
             ),
             // Placeholder for no image
             const SizedBox(height: 16.0),
-            TextField(
-              onChanged: (value) => _description = value,
-              decoration: InputDecoration(
+            StudentTextField(
                 labelText: 'Description',
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              ),
-            ),
+                controller: inputControllers.postDescriptionController),
             SizedBox(height: MediaQuery.of(context).size.height * .03),
             MyButton(
               buttontext: 'UPLOAD',

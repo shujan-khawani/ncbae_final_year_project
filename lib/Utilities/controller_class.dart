@@ -16,6 +16,8 @@ class InputControllers {
   final TextEditingController contactController = TextEditingController();
   final TextEditingController departmentController = TextEditingController();
   final TextEditingController percentileController = TextEditingController();
+  final TextEditingController postDescriptionController =
+      TextEditingController();
 
   //variables
   final String adminEmail = 'iamadmin123@gmail.com';
