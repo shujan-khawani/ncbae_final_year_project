@@ -28,7 +28,9 @@ class MyButton extends StatelessWidget {
             ),
             child: loading
                 ? Padding(
-                    padding: const EdgeInsets.all(18.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * .41,
+                        vertical: MediaQuery.of(context).size.height * .015),
                     child: CircularProgressIndicator(
                       color: Theme.of(context).colorScheme.secondary,
                     ),

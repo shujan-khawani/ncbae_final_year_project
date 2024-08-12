@@ -19,9 +19,13 @@ class AdminPostUpload extends StatefulWidget {
 }
 
 class _AdminPostUploadState extends State<AdminPostUpload> {
+  //  instance for text class
+  final textClass = TextClass();
+  //  variables
   File? _image;
   String _description = '';
-
+  bool loading = false;
+  //  function to pick image from gallery
   Future<void> _pickImage() async {
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -34,6 +38,7 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
     }
   }
 
+  //  function to upload the post (image with description)
   Future<void> _uploadPost() async {
     if (_image == null) {
       return; // Prevent upload without an image
@@ -59,10 +64,6 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
       _description = '';
     });
   }
-
-  final textClass = TextClass();
-
-  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -124,9 +125,18 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
             MyButton(
               buttontext: 'UPLOAD',
               onTap: () {
+                setState(() {
+                  loading = true;
+                });
                 _uploadPost().then((value) {
+                  setState(() {
+                    loading = false;
+                  });
                   Utils().toastMessage('Post Uploaded');
                 }).onError((error, stackTrace) {
+                  setState(() {
+                    loading = false;
+                  });
                   Utils().toastMessage(error.toString());
                 });
               },
@@ -143,7 +153,7 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
                   ),
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * .06),
-                Text(textClass.note),
+                Text(textClass.notePost),
               ],
             ),
           ],

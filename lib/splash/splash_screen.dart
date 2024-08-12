@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.all(36.0),
             child: CircularProgressIndicator(

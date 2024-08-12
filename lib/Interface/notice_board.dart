@@ -11,6 +11,7 @@ class NoticeBoard extends StatefulWidget {
 }
 
 class _NoticeBoardState extends State<NoticeBoard> {
+  //  function for pull to refresh
   Future<void> handleRefresh() async {
     return await Future.delayed(const Duration(milliseconds: 1200));
   }

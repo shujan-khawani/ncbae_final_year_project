@@ -29,7 +29,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            LogoImage(),
+            const LogoImage(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 18),
               child: Center(

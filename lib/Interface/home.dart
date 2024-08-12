@@ -5,6 +5,7 @@ import 'package:ncbae/Authentication/login_page.dart';
 import 'package:ncbae/Complain%20Management/complain_box.dart';
 import 'package:ncbae/Interface/notice_board.dart';
 import 'package:ncbae/Interface/profile.dart';
+import 'package:ncbae/Interface/student_admission.dart';
 import 'package:ncbae/Utilities/utils.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,7 +49,8 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           const NoticeBoard(),
           const ComplainBox(),
-          ProfilePage(),
+          const StudentAdmission(),
+          AboutPage(),
         ],
       ),
       drawer: Drawer(
@@ -111,7 +113,7 @@ class _HomePageState extends State<HomePage> {
             tabs: const [
               GButton(
                 icon: Icons.add_alert,
-                text: 'Notice Board',
+                text: 'Feed',
                 backgroundColor: Colors.transparent,
               ),
               GButton(
@@ -120,8 +122,13 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: Colors.transparent,
               ),
               GButton(
+                icon: Icons.document_scanner_outlined,
+                text: 'Admission',
+                backgroundColor: Colors.transparent,
+              ),
+              GButton(
                 icon: Icons.person,
-                text: 'About Us',
+                text: 'About',
                 backgroundColor: Colors.transparent,
               ),
             ],

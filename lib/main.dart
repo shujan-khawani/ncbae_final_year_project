@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/firebase_options.dart';
 import 'package:ncbae/splash/splash_screen.dart';
-import 'package:ncbae/theme/themes.dart';
+import 'package:ncbae/Themes/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure binding is initialized

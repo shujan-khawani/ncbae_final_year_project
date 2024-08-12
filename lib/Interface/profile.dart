@@ -3,8 +3,8 @@ import 'package:ncbae/Utilities/text_class.dart';
 import 'package:ncbae/components/logo_image.dart';
 import 'package:ncbae/components/text_container.dart';
 
-class ProfilePage extends StatelessWidget {
-  ProfilePage({super.key});
+class AboutPage extends StatelessWidget {
+  AboutPage({super.key});
 
   final selectableText = TextClass();
 

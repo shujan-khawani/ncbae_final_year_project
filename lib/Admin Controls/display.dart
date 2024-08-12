@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/Admin%20Controls/posting.dart';
+import 'package:ncbae/Interface/student_admission.dart';
 import 'package:ncbae/Authentication/login_page.dart';
 
 import '../Utilities/utils.dart';
@@ -32,6 +33,49 @@ class _AdminPostState extends State<AdminPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: Drawer(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        child: SafeArea(
+          child: Column(
+            children: [
+              const DrawerHeader(
+                child: Image(
+                  image: AssetImage('images/NCBAE LOGO.png'),
+                ),
+              ),
+              const Spacer(),
+              ListTile(
+                leading: Icon(
+                  Icons.system_update_outlined,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+                title: const Text('Admission Portal'),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const StudentAdmission()));
+                },
+              ),
+              const Divider(),
+              ListTile(
+                minVerticalPadding: 30,
+                onTap: () {
+                  auth.signOut().then((value) {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const LoginPage()));
+                    Utils().toastMessage(
+                        'Signed Out Successfully as \n ${auth.currentUser!.email}');
+                  }).onError((error, stackTrace) {
+                    Utils().toastMessage(error.toString());
+                  });
+                },
+                leading: const Icon(Icons.logout),
+                title: const Text('Good Bye! See Ya!'),
+              ),
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
         elevation: 10,
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -43,27 +87,6 @@ class _AdminPostState extends State<AdminPost> {
           ),
         ),
         centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: GestureDetector(
-              onTap: () {
-                auth.signOut().then((value) {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const LoginPage()));
-                  Utils().toastMessage(
-                      'Signed Out Successfully as \n ${auth.currentUser!.email}');
-                }).onError((error, stackTrace) {
-                  Utils().toastMessage(error.toString());
-                });
-              },
-              child: Icon(
-                Icons.logout_sharp,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-            ),
-          ),
-        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
