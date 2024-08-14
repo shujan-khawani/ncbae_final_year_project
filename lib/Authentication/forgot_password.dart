@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/utils.dart';
-import 'package:ncbae/components/logo_image.dart';
-import 'package:ncbae/components/my_button.dart';
-import 'package:ncbae/components/my_textfield.dart';
+import 'package:ncbae/Components/logo_image.dart';
+import 'package:ncbae/Components/my_button.dart';
+import 'package:ncbae/Components/my_textfield.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});

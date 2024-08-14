@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:ncbae/Authentication/forgot_password.dart';
 import 'package:ncbae/Authentication/register_page.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
-import 'package:ncbae/components/logo_image.dart';
-import 'package:ncbae/components/my_button.dart';
-import 'package:ncbae/components/my_textfield.dart';
+import 'package:ncbae/Components/logo_image.dart';
+import 'package:ncbae/Components/my_button.dart';
+import 'package:ncbae/Components/my_textfield.dart';
 import '../Interface/home.dart';
 import '../Utilities/utils.dart';
 

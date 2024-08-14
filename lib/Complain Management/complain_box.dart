@@ -2,7 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:ncbae/Complain%20Management/complain.dart';
-import 'package:ncbae/components/complain_container.dart';
+import 'package:ncbae/Components/complain_container.dart';
 
 class ComplainBox extends StatefulWidget {
   const ComplainBox({super.key});

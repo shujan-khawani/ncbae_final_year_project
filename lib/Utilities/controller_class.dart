@@ -12,7 +12,7 @@ class InputControllers {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController stdEmailController = TextEditingController();
   final TextEditingController cnicController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
   final TextEditingController departmentController = TextEditingController();
   final TextEditingController percentileController = TextEditingController();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ncbae/Utilities/text_class.dart';
-import 'package:ncbae/components/logo_image.dart';
-import 'package:ncbae/components/text_container.dart';
+import 'package:ncbae/Components/logo_image.dart';
+import 'package:ncbae/Components/text_container.dart';
 
 class AboutPage extends StatelessWidget {
   AboutPage({super.key});

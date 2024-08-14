@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/text_class.dart';
-import 'package:ncbae/components/my_button.dart';
-import 'package:ncbae/components/student_field.dart';
+import 'package:ncbae/Components/my_button.dart';
+import 'package:ncbae/Components/student_field.dart';
 
 import '../Utilities/utils.dart';
 

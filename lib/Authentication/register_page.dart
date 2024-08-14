@@ -5,8 +5,8 @@ import 'package:ncbae/Interface/home.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/utils.dart';
 
-import '../components/my_button.dart';
-import '../components/my_textfield.dart';
+import '../Components/my_button.dart';
+import '../Components/my_textfield.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/text_class.dart';
-import 'package:ncbae/components/my_button.dart';
-import 'package:ncbae/components/student_field.dart';
+import 'package:ncbae/Components/my_button.dart';
+import 'package:ncbae/Components/student_field.dart';
 
 import '../Utilities/utils.dart';
 
@@ -59,12 +59,13 @@ class _StudentAdmissionState extends State<StudentAdmission> {
       'imageUrl': imageUrl,
       'name': inputController.nameController.text,
       'cnicNumber': inputController.cnicController.text,
-      'address': inputController.addressController.text,
+      'city': inputController.cityController.text,
       'contactNumber': inputController.contactController.text,
       'emailAddress': inputController.stdEmailController.text,
       'department': inputController.departmentController.text,
+      'percentile': inputController.percentileController.text,
       'timestamp': FieldValue.serverTimestamp(),
-      'postId': DateTime.now().millisecondsSinceEpoch,
+      'studentId': DateTime.now().millisecondsSinceEpoch,
     });
 
     // Clear form fields
@@ -72,7 +73,7 @@ class _StudentAdmissionState extends State<StudentAdmission> {
       _image = null;
       inputController.nameController.clear();
       inputController.cnicController.clear();
-      inputController.addressController.clear();
+      inputController.cityController.clear();
       inputController.contactController.clear();
       inputController.stdEmailController.clear();
       inputController.departmentController.clear();
@@ -123,8 +124,8 @@ class _StudentAdmissionState extends State<StudentAdmission> {
                     controller: inputController.cnicController,
                   ),
                   StudentTextField(
-                    labelText: 'Address',
-                    controller: inputController.addressController,
+                    labelText: 'City',
+                    controller: inputController.cityController,
                   ),
                   StudentTextField(
                     labelText: 'Contact Number',
