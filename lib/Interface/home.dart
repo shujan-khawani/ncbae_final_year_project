@@ -4,7 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:ncbae/Authentication/login_page.dart';
 import 'package:ncbae/Complain%20Management/complain_box.dart';
 import 'package:ncbae/Interface/notice_board.dart';
-import 'package:ncbae/Interface/profile.dart';
+import 'package:ncbae/Interface/about.dart';
 import 'package:ncbae/Interface/student_admission.dart';
 import 'package:ncbae/Utilities/utils.dart';
 
@@ -98,13 +98,14 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text('N C B A & E'),
         centerTitle: true,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: GNav(
-            gap: 12,
+            gap: 8,
             backgroundColor: Theme.of(context).colorScheme.primary,
             tabBackgroundColor: Theme.of(context).colorScheme.secondary,
             activeColor: Theme.of(context).colorScheme.background,
@@ -123,7 +124,7 @@ class _HomePageState extends State<HomePage> {
               ),
               GButton(
                 icon: Icons.document_scanner_outlined,
-                text: 'Admission',
+                text: 'Register',
                 backgroundColor: Colors.transparent,
               ),
               GButton(

@@ -7,8 +7,5 @@ class TextClass {
 
   String mission =
       "Consistent with our vision, NCBA&E provides educational programs and services that promote student’s achievement and life-long learning to meet the needs of our diverse community.\n \n NCBA&E, a doctoral institution offers educational opportunities for students at both the graduate and undergraduate levels by blending the best of scholarly and professional pursuits. As a research university with a strong research culture, our goals to develop and transmit knowledge, wisdom and creativity, to foster intellectual and personal growth and prepare out students for productive career and meaningful lives.";
-  String notePost =
-      'Please Be Patient while the image is being uploaded.\nThe Size of image makes uploading slow!\nDo not tap the upload button multiple times!';
-  String noteStudent =
-      'Please Be Patient while the image is being uploaded.\nThe Size of image makes uploading slow!\nDo not tap the upload button multiple times!\nMake sure that the image is passport size and\nis below 1.5MBs';
+  String note = 'Please be Patient till the Image is being Uploaded';
 }

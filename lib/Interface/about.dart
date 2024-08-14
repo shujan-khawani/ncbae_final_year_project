@@ -24,15 +24,19 @@ class AboutPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        const Text(
+                        Text(
                           'ABOUT US',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 40,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                         SelectableText(
                           selectableText.aboutUs,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                         ),
                       ],
                     ),
@@ -52,6 +56,9 @@ class AboutPage extends StatelessWidget {
                         ),
                         SelectableText(
                           selectableText.vision,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                         ),
                       ],
                     ),
@@ -71,17 +78,20 @@ class AboutPage extends StatelessWidget {
                         ),
                         SelectableText(
                           selectableText.mission,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                const TextContainer(
+                TextContainer(
                   child: Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        Text(
+                        const Text(
                           'Contact Us',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -91,7 +101,7 @@ class AboutPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Column(
+                            const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -104,14 +114,26 @@ class AboutPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SelectableText('info.multan@ncbae.edu.pk'),
-                                SelectableText('0301-8561418')
+                                SelectableText(
+                                  'info.multan@ncbae.edu.pk',
+                                  style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                ),
+                                SelectableText(
+                                  '0301-8561418',
+                                  style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                ),
                               ],
                             ),
                           ],

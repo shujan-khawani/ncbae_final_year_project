@@ -168,20 +168,9 @@ class _StudentAdmissionState extends State<StudentAdmission> {
               },
               loading: loading,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * .02),
-            Row(
-              children: [
-                Text(
-                  'Note: \n',
-                  style: TextStyle(
-                    fontSize: 19,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                SizedBox(width: MediaQuery.of(context).size.width * .06),
-                Text(textClass.noteStudent),
-              ],
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * .03),
+
+            Text(textClass.note),
           ],
         ),
       ),

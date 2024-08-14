@@ -15,8 +15,9 @@ class ComplaintContainer extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
+              color: Theme.of(context).colorScheme.onPrimary,
             ),
           ),
         ),
