@@ -20,3 +20,8 @@ Backend is done through:<br>
 -> Realtime Firebase Database<br>
 -> Firebase Authentication<br>
 -> Firebase FireStrore<br>
+
+Contributions Include:
+
+=> Backend Done by Moiz Baloch -> https://github.com/igmoiiz
+=> Frontend Done by Shujan Khakwani -> https://github.com/shujan-khawani
