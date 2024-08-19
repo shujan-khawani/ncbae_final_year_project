@@ -87,58 +87,62 @@ class _AdminPostUploadState extends State<AdminPostUpload> {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            Align(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  // Image preview
-                  GestureDetector(
-                    onTap: () {
-                      _pickImage().then((value) {
-                        Utils().toastMessage('Image Selected');
-                      }).onError((error, stackTrace) {
-                        Utils().toastMessage(error.toString());
-                      });
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)),
-                      child: _image != null
-                          ? Image.file(_image!) // Show image if available
-                          : const Icon(Icons.image),
-                    ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            Column(
+              children: [
+                // Image preview
+                GestureDetector(
+                  onTap: () {
+                    _pickImage().then((value) {
+                      Utils().toastMessage('Image Selected');
+                    }).onError((error, stackTrace) {
+                      Utils().toastMessage(error.toString());
+                    });
+                  },
+                  child: Container(
+                    height: 280,
+                    width: 300,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Theme.of(context).colorScheme.primary)),
+                    child: _image != null
+                        ? Image.file(
+                            _image!,
+                            fit: BoxFit.cover,
+                          ) // Show image if available
+                        : const Icon(Icons.image),
                   ),
-                  // Placeholder for no image
-                  SizedBox(height: MediaQuery.of(context).size.height * .04),
-                  StudentTextField(
-                      labelText: 'What\'s on your Mind?',
-                      controller: inputControllers.postDescriptionController),
-                  SizedBox(height: MediaQuery.of(context).size.height * .01),
-                  MyButton(
-                    buttontext: 'UPLOAD',
-                    onTap: () {
+                ),
+                // Placeholder for no image
+                SizedBox(height: MediaQuery.of(context).size.height * .04),
+                StudentTextField(
+                    labelText: 'What\'s on your Mind?',
+                    controller: inputControllers.postDescriptionController),
+                SizedBox(height: MediaQuery.of(context).size.height * .01),
+                MyButton(
+                  buttontext: 'UPLOAD',
+                  onTap: () {
+                    setState(() {
+                      loading = true;
+                    });
+                    _uploadPost().then((value) {
                       setState(() {
-                        loading = true;
+                        loading = false;
                       });
-                      _uploadPost().then((value) {
-                        setState(() {
-                          loading = false;
-                        });
-                        Utils().toastMessage('Post Uploaded');
-                      }).onError((error, stackTrace) {
-                        setState(() {
-                          loading = false;
-                        });
-                        Utils().toastMessage(error.toString());
+                      Utils().toastMessage('Post Uploaded');
+                    }).onError((error, stackTrace) {
+                      setState(() {
+                        loading = false;
                       });
-                    },
-                    loading: loading,
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * .04),
+                      Utils().toastMessage(error.toString());
+                    });
+                  },
+                  loading: loading,
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * .04),
 
-                  Center(child: Text(textClass.note)),
-                ],
-              ),
+                Center(child: Text(textClass.note)),
+              ],
             ),
           ],
         ),
