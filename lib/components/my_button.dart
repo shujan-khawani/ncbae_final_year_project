@@ -61,9 +61,7 @@ class MyButton extends StatelessWidget {
               : Center(
                   child: Text(
                   buttontext,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).colorScheme.background),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 )),
         ),
       ),

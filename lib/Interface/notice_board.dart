@@ -63,14 +63,17 @@ class _NoticeBoardState extends State<NoticeBoard> {
                           document['description'],
                           style: const TextStyle(
                             letterSpacing: .5,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(
                             height: MediaQuery.of(context).size.height * .02),
+                        const Divider(),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(18),
                           child: Image.network(document['imageUrl']),
                         ),
+                        const Divider(),
                       ],
                     ),
                   ),
