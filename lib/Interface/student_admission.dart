@@ -103,6 +103,8 @@ class _StudentAdmissionState extends State<StudentAdmission> {
                 });
               },
               child: Container(
+                height: 180,
+                width: 100,
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
                 child: _image != null
@@ -124,7 +126,7 @@ class _StudentAdmissionState extends State<StudentAdmission> {
                     controller: inputController.cnicController,
                   ),
                   StudentTextField(
-                    labelText: 'City',
+                    labelText: 'City of Residence',
                     controller: inputController.cityController,
                   ),
                   StudentTextField(
@@ -136,11 +138,11 @@ class _StudentAdmissionState extends State<StudentAdmission> {
                     controller: inputController.stdEmailController,
                   ),
                   StudentTextField(
-                    labelText: 'Department',
+                    labelText: 'Department of Interest',
                     controller: inputController.departmentController,
                   ),
                   StudentTextField(
-                    labelText: 'Percentile in Intermediate',
+                    labelText: 'Percentile or CGPA',
                     controller: inputController.percentileController,
                   ),
                 ],

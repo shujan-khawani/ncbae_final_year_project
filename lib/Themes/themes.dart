@@ -1,28 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// Light Mode
+/// Light Mode theme data
+///
+/// This theme data is used to style the app in light mode.
+///
 ThemeData lightMode = ThemeData(
+  /// Font family used in light mode
   fontFamily: GoogleFonts.montserrat().fontFamily,
+
+  /// Brightness of the theme
   brightness: Brightness.light,
+
+  /// Color scheme used in light mode
   colorScheme: ColorScheme.light(
+    /// Background color
     background: Colors.grey.shade300,
+
+    /// Primary color
     primary: Colors.blueGrey.shade800,
+
+    /// Secondary color
     secondary: Colors.grey.shade900,
+
+    /// Color used on primary color
     onPrimary: Colors.white,
+
+    /// Color used on background color
     onBackground: Colors.blueGrey.shade600,
   ),
 );
 
-// Dark Mode
+/// Dark Mode theme data
+///
+/// This theme data is used to style the app in dark mode.
+///
+
 ThemeData darkMode = ThemeData(
-  fontFamily: GoogleFonts.montserrat().fontFamily,
+  /// Font family used in dark mode
+  fontFamily: GoogleFonts.montaga().fontFamily,
+
+  /// Brightness of the theme
   brightness: Brightness.dark,
+
+  /// Color scheme used in dark mode
   colorScheme: ColorScheme.dark(
+    /// Background color
     background: Colors.grey.shade900,
+
+    /// Primary color
     primary: Colors.blueGrey.shade800,
+
+    /// Secondary color
     secondary: Colors.grey.shade300,
+
+    /// Color used on primary color
     onPrimary: Colors.grey.shade300,
+
+    /// Color used on background color
     onBackground: Colors.blueGrey.shade600,
   ),
 );

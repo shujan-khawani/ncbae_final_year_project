@@ -64,7 +64,8 @@ class _ApplicantsPageState extends State<ApplicantsPage> {
                 alignment: Alignment.center,
                 child: CircularProgressIndicator());
           } else if (!snapshot.hasData) {
-            return Center(
+            return Align(
+              alignment: Alignment.center,
               child: Text(
                 'Not Even a Single Applicant has Applied to University Yet!',
                 style: TextStyle(
@@ -104,7 +105,7 @@ class _ApplicantsPageState extends State<ApplicantsPage> {
                           subtitle: document['cnicNumber'],
                         ),
                         ReusableRow(
-                          title: 'city:',
+                          title: 'City of Residence:',
                           subtitle: document['city'],
                         ),
                         ReusableRow(
@@ -116,11 +117,11 @@ class _ApplicantsPageState extends State<ApplicantsPage> {
                           subtitle: document['emailAddress'],
                         ),
                         ReusableRow(
-                          title: 'Department:',
+                          title: 'Department of Interest:',
                           subtitle: document['department'],
                         ),
                         ReusableRow(
-                          title: 'Percentile in Intermediate:',
+                          title: 'Percentile or CGPA:',
                           subtitle: document['percentile'],
                         ),
                         SizedBox(
