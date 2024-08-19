@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 
+/// A reusable row widget that displays a title and subtitle with a divider.
+///
+/// This widget is designed to be used in a list or other layout where a consistent
+/// row design is needed. It provides a simple and customizable way to display
+/// a title and subtitle with a divider.
+///
+/// Example:
+///
+/// ReusableRow(
+///   title: 'Title',
+///   subtitle: 'Subtitle',
+/// )
+///
 class ReusableRow extends StatelessWidget {
+  /// The title to be displayed in the row.
   final String title;
+
+  /// The subtitle to be displayed in the row.
   final String subtitle;
+
   const ReusableRow({
     super.key,
     required this.title,

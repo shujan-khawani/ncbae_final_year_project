@@ -2,15 +2,26 @@
 
 import 'package:flutter/material.dart';
 
+/// A custom text field widget for student information.
+///
+/// This widget provides a basic text field with a label, validation, and
+/// a controller to manage the input value.
 class StudentTextField extends StatelessWidget {
-  // var value1;
-  String labelText;
+  /// The label text to display above the text field.
+  final String labelText;
+
+  /// The text editing controller to manage the input value.
   final TextEditingController controller;
-  StudentTextField(
-      {super.key,
-      // required this.value1,
-      required this.labelText,
-      required this.controller});
+
+  /// Creates a new instance of [StudentTextField].
+  ///
+  /// [labelText] is the label text to display above the text field.
+  /// [controller] is the text editing controller to manage the input value.
+  const StudentTextField({
+    super.key,
+    required this.labelText,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,3 +58,18 @@ class StudentTextField extends StatelessWidget {
     );
   }
 }
+
+/// Example usage:
+///
+/// class MyWidget extends StatelessWidget {
+///   final _controller = TextEditingController();
+///
+///   @override
+///   Widget build(BuildContext context) {
+///     return StudentTextField(
+///       labelText: 'Student Name',
+///       controller: _controller,
+///     );
+///   }
+/// }
+/// 

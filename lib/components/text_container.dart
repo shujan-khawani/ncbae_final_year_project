@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+/// A widget that wraps its child in a card with a primary color background
+/// and a slight elevation.
 class TextContainer extends StatelessWidget {
+  /// The child widget to be wrapped in the card.
   final Widget child;
+
+  /// Creates a new instance of [TextContainer].
   const TextContainer({super.key, required this.child});
 
   @override
@@ -16,3 +21,10 @@ class TextContainer extends StatelessWidget {
     );
   }
 }
+
+/// Example usage:
+///
+/// TextContainer(
+///   child: Text('Hello, World!'),
+/// ),
+///

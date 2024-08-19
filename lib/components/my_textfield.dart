@@ -1,17 +1,28 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
+
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
+/// A custom text field widget with a label, optional suffix icon, and validation.
 class MyTextfield extends StatelessWidget {
+  /// The label text to display above the text field.
   final String labelText;
+
+  /// Whether the text field should obscure the input (e.g., for passwords).
   final bool obscure;
+
+  /// The text editing controller for the text field.
   final TextEditingController controller;
+
+  /// An optional suffix icon to display at the end of the text field.
   var suffixIcon;
+
+  /// Creates a new instance of [MyTextfield].
   MyTextfield({
     super.key,
     required this.labelText,
     required this.obscure,
     required this.controller,
-    required this.suffixIcon,
+    this.suffixIcon,
   });
 
   @override
@@ -50,3 +61,30 @@ class MyTextfield extends StatelessWidget {
     );
   }
 }
+
+/// Example usage:
+///
+/// class MyForm extends StatefulWidget {
+///   @override
+///   _MyFormState createState() => _MyFormState();
+/// }
+///
+/// class _MyFormState extends State<MyForm> {
+///   final _controller = TextEditingController();
+///
+///   @override
+///   Widget build(BuildContext context) {
+///     return Scaffold(
+///       body: Padding(
+///         padding: const EdgeInsets.all(20.0),
+///         child: MyTextfield(
+///           labelText: 'Enter your name',
+///           obscure: false,
+///           controller: _controller,
+///           suffixIcon: Icon(Icons.person),
+///         ),
+///       ),
+///     );
+///   }
+/// }
+/// 
