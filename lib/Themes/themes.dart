@@ -11,6 +11,9 @@ ThemeData lightMode = ThemeData(
   /// Font family used in light mode
   fontFamily: GoogleFonts.outfit().fontFamily,
 
+  /// Material 3
+  useMaterial3: true,
+
   /// Brightness of the theme
   brightness: Brightness.light,
 
@@ -41,6 +44,9 @@ ThemeData lightMode = ThemeData(
 ThemeData darkMode = ThemeData(
   /// Font family used in dark mode
   fontFamily: GoogleFonts.outfit().fontFamily,
+
+  /// Material 3
+  useMaterial3: true,
 
   /// Brightness of the theme
   brightness: Brightness.dark,
