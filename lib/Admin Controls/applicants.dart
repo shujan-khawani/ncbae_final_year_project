@@ -97,8 +97,20 @@ class _ApplicantsPageState extends State<ApplicantsPage> {
                         SizedBox(
                             height: MediaQuery.of(context).size.height * .01),
                         ReusableRow(
-                          title: 'Name:',
-                          subtitle: document['name'],
+                          title: 'First Name:',
+                          subtitle: document['firstName'],
+                        ),
+                        ReusableRow(
+                          title: 'Last Name:',
+                          subtitle: document['lastName'],
+                        ),
+                        ReusableRow(
+                          title: 'Guardian\'s Name:',
+                          subtitle: document['guardianName'],
+                        ),
+                        ReusableRow(
+                          title: 'Guardian\'s Occupation:',
+                          subtitle: document['guardianOccupation'],
                         ),
                         ReusableRow(
                           title: 'CNIC:',
@@ -118,7 +130,11 @@ class _ApplicantsPageState extends State<ApplicantsPage> {
                         ),
                         ReusableRow(
                           title: 'Department of Interest:',
-                          subtitle: document['department'],
+                          subtitle: document['departmentName'],
+                        ),
+                        ReusableRow(
+                          title: 'Program:',
+                          subtitle: document['program'],
                         ),
                         ReusableRow(
                           title: 'Percentile or CGPA:',

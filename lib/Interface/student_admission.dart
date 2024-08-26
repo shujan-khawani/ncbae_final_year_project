@@ -21,6 +21,39 @@ class StudentAdmission extends StatefulWidget {
 }
 
 class _StudentAdmissionState extends State<StudentAdmission> {
+  //  selected item index
+  String? selectedItemProgram;
+  //  list for dropdown button
+  final List<String> program = [
+    'Bachelors',
+    'Masters',
+    'M-Phil',
+    'Phd',
+  ]; //  selected item index
+  String? selectedItemDepartment;
+  //  list for dropdown button
+  final List<String> department = [
+    'BS-Computer Science',
+    'BS-Information Technology',
+    'BS-Software Engineering',
+    'Masters of Computer Science',
+    'M-Phil in Computer Science',
+    'Phd in Computer Science',
+    'BS-English',
+    'Business Administration',
+    'BS-Mathematics',
+    'BS-Economics',
+    'M-Phil Economics',
+    'Phd-Economics',
+    'BS-Islamic Studies',
+    'BS-Commerce',
+    'BS-Physics',
+    'BS-Statistics',
+    'M-Phil Statistics',
+    'Phd-Statistics',
+    'MBA-1.5 Years',
+    'MBA-2.5 Years',
+  ];
   //  variables
   File? _image;
   //  global form key
@@ -57,26 +90,29 @@ class _StudentAdmissionState extends State<StudentAdmission> {
     // Save all student data to Firestore
     await FirebaseFirestore.instance.collection('students').add({
       'imageUrl': imageUrl,
-      'name': inputController.nameController.text,
+      'firstName': inputController.firstNameController.text,
+      'lastName': inputController.lastNameController.text,
+      'guardianName': inputController.guardianNameController.text,
+      'guardianOccupation': inputController.guardianOccupationController.text,
       'cnicNumber': inputController.cnicController.text,
       'city': inputController.cityController.text,
       'contactNumber': inputController.contactController.text,
       'emailAddress': inputController.stdEmailController.text,
-      'department': inputController.departmentController.text,
+      'program': selectedItemProgram,
       'percentile': inputController.percentileController.text,
       'timestamp': FieldValue.serverTimestamp(),
       'studentId': DateTime.now().millisecondsSinceEpoch,
+      'departmentName': selectedItemDepartment,
     });
 
     // Clear form fields
     setState(() {
       _image = null;
-      inputController.nameController.clear();
+      inputController.firstNameController.clear();
       inputController.cnicController.clear();
       inputController.cityController.clear();
       inputController.contactController.clear();
       inputController.stdEmailController.clear();
-      inputController.departmentController.clear();
       inputController.percentileController.clear();
     });
   }
@@ -97,7 +133,7 @@ class _StudentAdmissionState extends State<StudentAdmission> {
             GestureDetector(
               onTap: () {
                 _pickImage().then((value) {
-                  Utils().toastMessage('Student Added Successfully!');
+                  Utils().toastMessage('Image Selected Successfully!');
                 }).onError((error, stackTrace) {
                   Utils().toastMessage(error.toString());
                 });
@@ -119,8 +155,21 @@ class _StudentAdmissionState extends State<StudentAdmission> {
               child: Column(
                 children: [
                   StudentTextField(
-                      labelText: 'Name',
-                      controller: inputController.nameController),
+                    labelText: 'First Name',
+                    controller: inputController.firstNameController,
+                  ),
+                  StudentTextField(
+                    labelText: 'Last Name',
+                    controller: inputController.lastNameController,
+                  ),
+                  StudentTextField(
+                    labelText: 'Guardian\'s Name',
+                    controller: inputController.guardianNameController,
+                  ),
+                  StudentTextField(
+                    labelText: 'Guardian\'s Occupation',
+                    controller: inputController.guardianOccupationController,
+                  ),
                   StudentTextField(
                     labelText: 'CNIC Number',
                     controller: inputController.cnicController,
@@ -138,12 +187,72 @@ class _StudentAdmissionState extends State<StudentAdmission> {
                     controller: inputController.stdEmailController,
                   ),
                   StudentTextField(
-                    labelText: 'Department of Interest',
-                    controller: inputController.departmentController,
-                  ),
-                  StudentTextField(
                     labelText: 'Percentile or CGPA',
                     controller: inputController.percentileController,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: DropdownButtonFormField<String>(
+                      value: selectedItemProgram,
+                      items: program.map((item) {
+                        return DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          selectedItemProgram = value;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Program Type',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: DropdownButtonFormField<String>(
+                      value: selectedItemDepartment,
+                      items: department.map((item) {
+                        return DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          selectedItemDepartment = value;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Department',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

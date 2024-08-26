@@ -9,14 +9,18 @@ class InputControllers {
   final TextEditingController adminPassController = TextEditingController();
   final TextEditingController adminEmailController = TextEditingController();
   final TextEditingController forgotController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
   final TextEditingController stdEmailController = TextEditingController();
   final TextEditingController cnicController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
-  final TextEditingController departmentController = TextEditingController();
   final TextEditingController percentileController = TextEditingController();
   final TextEditingController postDescriptionController =
+      TextEditingController();
+
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController guardianNameController = TextEditingController();
+  final TextEditingController guardianOccupationController =
       TextEditingController();
 
   //variables

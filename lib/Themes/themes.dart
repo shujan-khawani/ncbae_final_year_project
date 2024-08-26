@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 ///
 ThemeData lightMode = ThemeData(
   /// Font family used in light mode
-  fontFamily: GoogleFonts.montserrat().fontFamily,
+  fontFamily: GoogleFonts.outfit().fontFamily,
 
   /// Brightness of the theme
   brightness: Brightness.light,
@@ -38,7 +40,7 @@ ThemeData lightMode = ThemeData(
 
 ThemeData darkMode = ThemeData(
   /// Font family used in dark mode
-  fontFamily: GoogleFonts.montaga().fontFamily,
+  fontFamily: GoogleFonts.outfit().fontFamily,
 
   /// Brightness of the theme
   brightness: Brightness.dark,
