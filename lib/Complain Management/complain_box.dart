@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -71,6 +73,7 @@ class _ComplainBoxState extends State<ComplainBox> {
       floatingActionButton: FloatingActionButton(
           elevation: 10,
           autofocus: true,
+          tooltip: 'Happy Easter 2!',
           onPressed: () {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const ComplainPage()));

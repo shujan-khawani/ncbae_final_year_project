@@ -20,10 +20,10 @@ ThemeData lightMode = ThemeData(
   /// Color scheme used in light mode
   colorScheme: ColorScheme.light(
     /// Background color
-    background: Colors.grey.shade300,
+    background: Color(0xFFfaf9f6),
 
     /// Primary color
-    primary: Colors.blueGrey.shade800,
+    primary: Colors.grey.shade300,
 
     /// Secondary color
     secondary: Colors.grey.shade900,
@@ -32,7 +32,7 @@ ThemeData lightMode = ThemeData(
     onPrimary: Colors.white,
 
     /// Color used on background color
-    onBackground: Colors.blueGrey.shade600,
+    onBackground: Colors.grey.shade200,
   ),
 );
 
@@ -57,15 +57,15 @@ ThemeData darkMode = ThemeData(
     background: Colors.grey.shade900,
 
     /// Primary color
-    primary: Colors.blueGrey.shade800,
+    primary: Colors.grey.shade800,
 
     /// Secondary color
-    secondary: Colors.grey.shade300,
+    secondary: Colors.grey.shade200,
 
     /// Color used on primary color
     onPrimary: Colors.grey.shade300,
 
     /// Color used on background color
-    onBackground: Colors.blueGrey.shade600,
+    onBackground: Colors.grey.shade700,
   ),
 );

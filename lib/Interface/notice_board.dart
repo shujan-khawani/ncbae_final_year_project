@@ -48,12 +48,12 @@ class _NoticeBoardState extends State<NoticeBoard> {
                 DocumentSnapshot document = snapshot.data!.docs[index];
                 return Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12.0, vertical: 7),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   child: Container(
-                    padding: const EdgeInsets.all(18),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(4),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -61,19 +61,22 @@ class _NoticeBoardState extends State<NoticeBoard> {
                       children: [
                         Text(
                           document['description'],
-                          style: const TextStyle(
+                          style: TextStyle(
                             letterSpacing: .5,
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontSize: 16,
                           ),
                         ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * .02),
-                        const Divider(),
+                        Divider(
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(18),
+                          borderRadius: BorderRadius.circular(4),
                           child: Image.network(document['imageUrl']),
                         ),
-                        const Divider(),
+                        Divider(
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
                       ],
                     ),
                   ),

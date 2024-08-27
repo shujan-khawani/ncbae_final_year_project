@@ -117,9 +117,12 @@ class _AdminPostState extends State<AdminPost> {
 
                 return Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
-                  child: Card(
-                    color: Theme.of(context).colorScheme.primary,
+                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                     child: ListTile(
                       leading: ClipRRect(
                           borderRadius: BorderRadius.circular(4),

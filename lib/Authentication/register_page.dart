@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ncbae/Admin%20Controls/display.dart';
+import 'package:ncbae/Components/logo_image.dart';
 import 'package:ncbae/Interface/home.dart';
 import 'package:ncbae/Utilities/controller_class.dart';
 import 'package:ncbae/Utilities/utils.dart';
@@ -40,16 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: SafeArea(
           child: ListView(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Image.asset(
-                    'images/Login image.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              const LogoImage(),
               Column(
                 children: [
                   Padding(
@@ -89,8 +82,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(right: 18.0),
                               child: obscureText2
-                                  ? const Icon(Icons.visibility_off_sharp)
-                                  : const Icon(Icons.visibility_sharp),
+                                  ? const Icon(CupertinoIcons.eye_solid)
+                                  : const Icon(CupertinoIcons.eye_slash_fill),
                             ),
                           ),
                           labelText: 'Password',

@@ -83,13 +83,16 @@ class _ApplicantsPageState extends State<ApplicantsPage> {
 
                 return Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
-                  child: Card(
-                    color: Theme.of(context).colorScheme.primary,
+                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(4),
                               child: Image.network(document['imageUrl'])),
@@ -166,7 +169,7 @@ class _ApplicantsPageState extends State<ApplicantsPage> {
                               decoration: BoxDecoration(
                                 color:
                                     Theme.of(context).colorScheme.onBackground,
-                                borderRadius: BorderRadius.circular(18),
+                                borderRadius: BorderRadius.circular(4),
                               ),
                               child: loading
                                   ? const CircularProgressIndicator(

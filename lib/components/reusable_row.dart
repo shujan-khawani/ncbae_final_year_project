@@ -35,8 +35,8 @@ class ReusableRow extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onBackground,
-          borderRadius: BorderRadius.circular(12),
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.circular(4),
         ),
         child: Column(
           children: [
@@ -54,8 +54,8 @@ class ReusableRow extends StatelessWidget {
                   ),
                   Text(
                     subtitle,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
                 ],

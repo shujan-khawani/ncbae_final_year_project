@@ -208,13 +208,13 @@ class _StudentAdmissionState extends State<StudentAdmission> {
                       decoration: InputDecoration(
                         labelText: 'Program Type',
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(4),
                           borderSide: BorderSide(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(4),
                           borderSide: BorderSide(
                             color: Theme.of(context).colorScheme.primary,
                           ),
@@ -240,13 +240,13 @@ class _StudentAdmissionState extends State<StudentAdmission> {
                       decoration: InputDecoration(
                         labelText: 'Department',
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(4),
                           borderSide: BorderSide(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(4),
                           borderSide: BorderSide(
                             color: Theme.of(context).colorScheme.primary,
                           ),

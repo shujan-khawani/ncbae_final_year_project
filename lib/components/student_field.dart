@@ -42,13 +42,13 @@ class StudentTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(4),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.secondary,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(4),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.primary,
             ),

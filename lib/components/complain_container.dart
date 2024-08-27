@@ -15,17 +15,19 @@ class ComplaintContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        color: Theme.of(context).colorScheme.primary,
-        elevation: 10,
+      padding: const EdgeInsets.only(top: 12),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.circular(4),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
         ),

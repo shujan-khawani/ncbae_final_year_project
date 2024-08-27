@@ -11,7 +11,7 @@ class LogoImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(4),
       child: SizedBox(
         width: double.infinity,
         child: Image.asset(

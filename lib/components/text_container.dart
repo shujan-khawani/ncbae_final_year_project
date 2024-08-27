@@ -13,11 +13,12 @@ class TextContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8),
-      child: Card(
-        elevation: 10,
-        color: Theme.of(context).colorScheme.primary,
-        child: child,
-      ),
+      child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: child),
     );
   }
 }

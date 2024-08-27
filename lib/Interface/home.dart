@@ -1,5 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:ncbae/Authentication/login_page.dart';
 import 'package:ncbae/Complain%20Management/complain_box.dart';
@@ -53,88 +57,82 @@ class _HomePageState extends State<HomePage> {
           AboutPage(),
         ],
       ),
-      drawer: Drawer(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        child: SafeArea(
-          child: Column(
-            children: [
-              const DrawerHeader(
-                child: Image(
-                  image: AssetImage('images/NCBAE LOGO.png'),
-                ),
-              ),
-              const Spacer(),
-              const Divider(),
-              ListTile(
-                minVerticalPadding: 30,
-                onTap: () {
-                  setState(() {
-                    loading = true;
-                  });
-                  auth.signOut().then((value) {
-                    setState(() {
-                      loading = false;
-                    });
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const LoginPage()));
-                    Utils().toastMessage('Signed Out Successfully!');
-                  }).onError((error, stackTrace) {
-                    setState(() {
-                      loading = false;
-                    });
-                    Utils().toastMessage(error.toString());
-                  });
-                },
-                leading: const Icon(Icons.logout),
-                title: const Text('Good Bye! See Ya!'),
-              ),
-            ],
-          ),
-        ),
-      ),
       appBar: AppBar(
         elevation: 10,
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text('N C B A & E'),
         centerTitle: true,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: GNav(
-            gap: 8,
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            tabBackgroundColor: Theme.of(context).colorScheme.secondary,
-            activeColor: Theme.of(context).colorScheme.background,
-            selectedIndex: _selectedIndex,
-            onTabChange: _onNavBarTapped,
-            tabs: const [
-              GButton(
-                icon: Icons.add_alert,
-                text: 'Feed',
-                backgroundColor: Colors.transparent,
-              ),
-              GButton(
-                icon: Icons.message_outlined,
-                text: 'Complaints',
-                backgroundColor: Colors.transparent,
-              ),
-              GButton(
-                icon: Icons.document_scanner_outlined,
-                text: 'Register',
-                backgroundColor: Colors.transparent,
-              ),
-              GButton(
-                icon: Icons.person,
-                text: 'About',
-                backgroundColor: Colors.transparent,
-              ),
-            ],
+        leading: Padding(
+          padding: const EdgeInsets.all(9),
+          child: GestureDetector(
+            onTap: () {
+              Utils().toastMessage('Happy Easter!');
+            },
+            child: const Image(
+              image: AssetImage('images/NCBAE LOGO.png'),
+            ),
           ),
         ),
+        foregroundColor: Theme.of(context).colorScheme.secondary,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  loading = true;
+                });
+                auth.signOut().then((value) {
+                  setState(() {
+                    loading = false;
+                  });
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const LoginPage()));
+                  Utils().toastMessage('Signed Out Successfully!');
+                }).onError((error, stackTrace) {
+                  setState(() {
+                    loading = false;
+                  });
+                  Utils().toastMessage(error.toString());
+                });
+              },
+              child: const Icon(
+                CupertinoIcons.arrow_uturn_left,
+                size: 22,
+              ),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: GNav(
+        gap: 8,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        tabBackgroundColor: Theme.of(context).colorScheme.secondary,
+        activeColor: Colors.black,
+        selectedIndex: _selectedIndex,
+        onTabChange: _onNavBarTapped,
+        tabs: const [
+          GButton(
+            icon: CupertinoIcons.news,
+            text: 'Feed',
+            backgroundColor: Colors.transparent,
+          ),
+          GButton(
+            icon: CupertinoIcons.text_bubble,
+            text: 'Complaints',
+            backgroundColor: Colors.transparent,
+          ),
+          GButton(
+            icon: CupertinoIcons.doc_richtext,
+            text: 'Register',
+            backgroundColor: Colors.transparent,
+          ),
+          GButton(
+            icon: CupertinoIcons.person_3,
+            text: 'About',
+            backgroundColor: Colors.transparent,
+          ),
+        ],
       ),
     );
   }
