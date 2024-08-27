@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ncbae/Easter%20Egg/easter_egg_game.dart';
 import 'package:ncbae/Utilities/text_class.dart';
 import 'package:ncbae/Components/logo_image.dart';
 import 'package:ncbae/Components/text_container.dart';
@@ -64,25 +65,31 @@ class AboutPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                TextContainer(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        const Text(
-                          'MISSION',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 40,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const GuessTheWordGame()));
+                  },
+                  child: TextContainer(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          const Text(
+                            'MISSION',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                            ),
                           ),
-                        ),
-                        SelectableText(
-                          selectableText.mission,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.secondary,
+                          SelectableText(
+                            selectableText.mission,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
