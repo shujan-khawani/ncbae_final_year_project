@@ -21,7 +21,4 @@ Backend is done through:<br>
 -> Firebase Authentication<br>
 -> Firebase FireStrore<br>
 <br>
-Contributions Include:<br>
-<br>
-=> Backend Done by Moiz Baloch -> https://github.com/igmoiiz<br>
-=> Frontend Done by Shujan Khakwani -> https://github.com/shujan-khawani<br>
+
